@@ -1,0 +1,61 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="zh-CN">
+<head>
+    <script type="text/javascript" th:src="@{https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js}"></script>
+    <link th:href="@{https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet"/>
+    <meta charset="UTF-8"/>
+    <title>书籍列表</title>
+</head>
+<style>
+    .book-pic {
+        width: 100px;
+        height: 145px;
+    }
+
+    .left {
+        display: flex;
+    }
+
+    .kuang {
+        width: 220px;
+        height: 200px;
+        margin: 30px 200px 0px 55px;
+    }
+
+    .inf {
+        margin-left: 20px;
+    }
+
+    .zi {
+        font-size: 12px;
+    }
+
+    .logo {
+        width: 1500px;
+    }
+</style>
+
+<body>
+<nav class="navbar navbar-default">
+</nav>
+<div>
+    <img class="logo" src="http://pa4uq3179.bkt.clouddn.com/22.png"/>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 kuang " th:each="book : ${bookList}">
+            <div class="left">
+                <img th:src="${book.avatar}" class="book-pic">
+                <div class="inf">
+                    <p><a th:href="@{/book/{bookId}(bookId=${book.id})}" th:text="${book.name}"></a></p>
+                    作者： <p class="zi" th:text="${book.author}"></p>
+                    <p class="zi" th:text="${book.type}"></p>
+                </div>
+            </div>
+            <p class="zi" th:text="${book.remark}"></p>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
